@@ -20,8 +20,11 @@ jobs:
       - name: Run JMeter Test
         run: |
           jmeter -n -t testplanexam.jmx -l results.jtl
-          mkdir report
+
+      - name: Generate HTML Report
+        run: |
           jmeter -g results.jtl -o report
+          ls -R
 
       - name: Upload Report
         uses: actions/upload-artifact@v4
