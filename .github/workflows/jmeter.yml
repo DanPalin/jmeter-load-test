@@ -1,1 +1,0 @@
-jmeter -n -t testplanexam.jmx -l results.jtl -e -o report
