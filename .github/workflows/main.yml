@@ -14,18 +14,17 @@ jobs:
 
       - name: Install JMeter
         run: |
-          sudo apt update
-          sudo apt install jmeter -y
+          wget https://downloads.apache.org/jmeter/binaries/apache-jmeter-5.6.3.tgz
+          tar -xzf apache-jmeter-5.6.3.tgz
+          sudo mv apache-jmeter-5.6.3 /opt/jmeter
 
       - name: Run JMeter Test
         run: |
-          jmeter -n -t testplanexam.jmx -l results.jtl
+          /opt/jmeter/bin/jmeter -n -t testplanexam.jmx -l results.jtl
 
       - name: Generate HTML Report
         run: |
-          rm -rf report
-          jmeter -g results.jtl -o report
-          ls -R
+          /opt/jmeter/bin/jmeter -g results.jtl -o report
 
       - name: Upload Report
         uses: actions/upload-artifact@v4
