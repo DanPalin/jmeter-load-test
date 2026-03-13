@@ -27,13 +27,8 @@ jobs:
         run: |
           /opt/jmeter/bin/jmeter -n -t testplanexam.jmx -l results.jtl
 
-      - name: Generate HTML Report
-        run: |
-          mkdir report
-          /opt/jmeter/bin/jmeter -g results.jtl -o report || true
-
-      - name: Upload Report
+      - name: Upload Results
         uses: actions/upload-artifact@v4
         with:
-          name: jmeter-report
-          path: report
+          name: jmeter-results
+          path: results.jtl
