@@ -23,9 +23,9 @@ jobs:
 
       - name: Generate HTML Report
         run: |
-          jmeter -g results.jtl -o report -f
-          ls
-          ls report
+          rm -rf report
+          jmeter -g results.jtl -o report
+          ls -R
 
       - name: Upload Report
         uses: actions/upload-artifact@v4
